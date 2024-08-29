@@ -30,9 +30,9 @@ const MainContentBody = () => {
 	const [steps, setSteps] = useState(mockData);
 	const [guideStep, setGuideStep] = useState(mockData);
 
-	// const handleSaveStep = newStep => {
-	// 	setSteps(prevSteps => [...prevSteps, newStep]);
-	// };
+	const handleSaveStep = newStep => {
+		setSteps(prevSteps => [...prevSteps, newStep]);
+	};
 
 	const handleEditStep = updatedStep => {
 		setSteps(prevSteps =>
@@ -52,7 +52,7 @@ const MainContentBody = () => {
 						title='User Guide'
 						description='User guides are a type of technical documentation that enables customers and end-users with step-by-step instructions on how to execute a task or process.'
 					/>
-					{guideStep.map(guideStep => (
+					{/* {guideStep.map(guideStep => (
 						<GuideStepSet
 							guideStep={guideStep}
 							steps={steps}
@@ -64,7 +64,7 @@ const MainContentBody = () => {
 					<UserGuideFooter
 						info='maincontensfooter
 					2024 Your Company. All rights reserved.'
-					/>
+					/> */}
 				</div>
 			</div>
 		</>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import mockData from '../../../data/MockData';
-import GuideStep from './GuideStep'; // Импортируем компонент StepItem
+import GuideStep from './GuideStep';
 import styles from './GuideStepsSet.module.css';
 
 const GuideStepsSetHeader = ({
@@ -31,7 +30,6 @@ const GuideStepsSetFooter = ({ content }) => {
 };
 
 const GuideStepSet = ({ guideStep, steps, onEditStep, onDeleteStep, mode }) => {
-	const [steps, setSteps] = useState(mockData);
 	const [isContentVisible, setIsContentVisible] = useState(true);
 	const [setMode, setSetMode] = useState('display'); // Режим по умолчанию
 
@@ -49,7 +47,6 @@ const GuideStepSet = ({ guideStep, steps, onEditStep, onDeleteStep, mode }) => {
 				/>
 				{isContentVisible && (
 					<div>
-						{/* В зависимости от режима рендерим список шагов или контент для создания нового шага */}
 						{setMode === 'create' ? (
 							<GuideStep
 								mode='create'

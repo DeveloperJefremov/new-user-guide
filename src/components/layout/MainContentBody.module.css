@@ -1,18 +1,22 @@
 /* src/components/UserGuideFooter.module.css */
 
 .mainContentBody {
-	margin: 0;
+	margin: 30px;
 	padding: 0;
 	box-sizing: border-box;
 }
+/* temporary setup for focus */
+.mainContentBody {
+	outline: 5px solid red;
+}
 
-main {
+/* main {
 	grid-area: content;
 	padding: 20px;
 	background-color: #fff;
 	display: flex;
 	flex-direction: column;
-}
+} */
 .userGuideFooter {
 	background-color: #f4f4f4;
 	padding: 20px;

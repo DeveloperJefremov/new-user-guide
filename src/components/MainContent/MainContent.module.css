@@ -1,0 +1,33 @@
+/* MainContent.module.css */
+
+.mainContent {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 50px;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.mainContentHeader {
+	outline: 2px solid blue;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.mainContentBody {
+	outline: 2px solid green;
+	flex: 1;
+}
+
+.mainContentFooter {
+	outline: 2px solid rgb(110, 18, 110);
+	text-align: center;
+	/* margin-top: 20px; */
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
