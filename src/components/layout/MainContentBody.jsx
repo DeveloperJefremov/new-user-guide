@@ -7,7 +7,7 @@ import styles from './MainContentBody.module.css';
 
 const UserGuideHeader = ({ title, description }) => {
 	return (
-		<div>
+		<div className={styles.userGuideHeader}>
 			<h1>{title}</h1>
 			<p>{description}</p>
 		</div>
@@ -48,10 +48,10 @@ const MainContentBody = () => {
 		<>
 			<div className={styles.mainContentBody}>
 				<div className={styles.main}>
-					<UserGuideHeader
+					{/* <UserGuideHeader
 						title='User Guide'
 						description='User guides are a type of technical documentation that enables customers and end-users with step-by-step instructions on how to execute a task or process.'
-					/>
+					/> */}
 					{/* {guideStep.map(guideStep => (
 						<GuideStepSet
 							guideStep={guideStep}

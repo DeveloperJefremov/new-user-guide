@@ -11,7 +11,7 @@ const MainContentHeader = ({ title, description }) => {
 	return (
 		<div className={styles.mainContentHeader}>
 			<h1>{title}</h1>
-			<p>{description}</p>
+			<h2>{description}</h2>
 		</div>
 	);
 };

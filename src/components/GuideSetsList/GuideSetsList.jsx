@@ -9,7 +9,7 @@ export default function GuideSetsList() {
 
 	return (
 		<div className={styles.guideSetsList}>
-			<h1>List</h1>
+			<h2>Guide Topics:</h2>
 			{guideSetsList.map(guideSet => (
 				<GuideSet data={guideSet.data} key={guideSet.id} />
 			))}

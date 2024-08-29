@@ -2,13 +2,9 @@ import { useState } from 'react';
 import styles from './GuideSet.module.css';
 
 import GuideStep from '../GuideStep/GuideStep';
-const GuideStepsSetHeader = ({
-	setTitle,
-	onToggleContent,
-	isContentVisible,
-}) => {
+const GuideSetHeader = ({ setTitle, onToggleContent, isContentVisible }) => {
 	return (
-		<div className={styles.heading}>
+		<div className={styles.guideSetHeader}>
 			<h2>{setTitle}</h2>
 			<div className={styles.buttonContainer}>
 				<button className={styles.launchButton}>Launch</button>
@@ -20,10 +16,10 @@ const GuideStepsSetHeader = ({
 	);
 };
 
-const GuideStepsSetFooter = ({ content }) => {
+const GuideSetFooter = ({ content }) => {
 	if (!content) return null;
 	return (
-		<div className={styles.userGuideFooter}>
+		<div className={styles.guideSetFooter}>
 			<p>{content}</p>
 		</div>
 	);
@@ -38,30 +34,30 @@ export default function GuideSet({ data }) {
 	};
 
 	return (
-		<div className={styles.guideStepSet}>
-			<GuideStepsSetHeader
+		<div className={styles.guideSet}>
+			<GuideSetHeader
 				setTitle={data[0].setHeader}
 				onToggleContent={toggleContentVisibility}
 				isContentVisible={isContentVisible}
 			/>
 
-			<ul className={styles.guideSet}>
-				{data.map(set => {
-					return (
-						<li>
-							<div>{set.setHeader}</div>
+			{isContentVisible && (
+				<ul>
+					{data.map(set => (
+						<li key={set.setHeader}>
+							{/* <div>{set.setHeader}</div> */}
 							<div>
-								{set.setBody.map(step => (
-									<GuideStep {...step} />
+								{set.setBody.map((step, index) => (
+									<GuideStep key={index} {...step} />
 								))}
 							</div>
-							<div>{set.setFooter}</div>
+							{/* <div>{set.setFooter}</div> */}
 						</li>
-					);
-				})}
-			</ul>
+					))}
+				</ul>
+			)}
 
-			<GuideStepsSetFooter content={data[0].setFooter} />
+			{isContentVisible && <GuideSetFooter content={data[0].setFooter} />}
 		</div>
 	);
 }
