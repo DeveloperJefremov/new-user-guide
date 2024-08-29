@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Card from '../../UI/Card';
+import mockData from '../../../data/MockData';
 import GuideStep from './GuideStep'; // Импортируем компонент StepItem
 import styles from './GuideStepsSet.module.css';
 
@@ -7,8 +7,6 @@ const GuideStepsSetHeader = ({
 	setTitle,
 	onToggleContent,
 	isContentVisible,
-
-	mode,
 }) => {
 	return (
 		<div className={styles.heading}>
@@ -32,36 +30,53 @@ const GuideStepsSetFooter = ({ content }) => {
 	);
 };
 
-const GuideStepSet = ({ guideStep, steps, onEditStep, onDeleteStep }) => {
+const GuideStepSet = ({ guideStep, steps, onEditStep, onDeleteStep, mode }) => {
+	const [steps, setSteps] = useState(mockData);
 	const [isContentVisible, setIsContentVisible] = useState(true);
+	const [setMode, setSetMode] = useState('display'); // Режим по умолчанию
 
 	const toggleContentVisibility = () => {
 		setIsContentVisible(prevState => !prevState);
 	};
 
 	return (
-		<>
+		<div className={styles.guideStepSet}>
 			<div className={styles.stepsContainer}>
 				<GuideStepsSetHeader
-					title={guideStep.setTitle}
+					setTitle={guideStep.setTitle}
 					onToggleContent={toggleContentVisibility}
 					isContentVisible={isContentVisible}
 				/>
-				{steps.length > 0 && (
-					<Card className={styles.stepsContainer}>
-						{steps.map(step => (
+				{isContentVisible && (
+					<div>
+						{/* В зависимости от режима рендерим список шагов или контент для создания нового шага */}
+						{setMode === 'create' ? (
 							<GuideStep
-								key={step.id}
-								stepData={step}
+								mode='create'
+								stepData={{}} // Передаем пустой объект для создания нового шага
 								onEditStep={onEditStep}
 								onDelete={onDeleteStep}
 							/>
-						))}
-					</Card>
+						) : (
+							steps.length > 0 && (
+								<div className={styles.stepsContainer}>
+									{steps.map(step => (
+										<GuideStep
+											key={step.id}
+											stepData={step}
+											onEditStep={onEditStep}
+											onDelete={onDeleteStep}
+											mode={mode} // Передаем текущий режим в GuideStep
+										/>
+									))}
+								</div>
+							)
+						)}
+					</div>
 				)}
 				<GuideStepsSetFooter content={guideStep.setFooter} />
 			</div>
-		</>
+		</div>
 	);
 };
 
