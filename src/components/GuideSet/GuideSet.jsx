@@ -25,7 +25,7 @@ const GuideSetFooter = ({ content }) => {
 	);
 };
 
-export default function GuideSet({ data }) {
+export default function GuideSet({ data, adminMode }) {
 	const [isContentVisible, setIsContentVisible] = useState(false);
 
 	const toggleContentVisibility = () => {
@@ -42,15 +42,16 @@ export default function GuideSet({ data }) {
 
 			{isContentVisible && (
 				<ul>
+					{/* <li>
+						<GuideStep key='0' title='createNewStep' />
+					</li> */}
 					{data.map(set => (
 						<li key={set.setHeader}>
-							{/* <div>{set.setHeader}</div> */}
 							<div>
 								{set.setBody.map((step, index) => (
 									<GuideStep key={index} {...step} />
 								))}
 							</div>
-							{/* <div>{set.setFooter}</div> */}
 						</li>
 					))}
 				</ul>

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import styles from './GuideStep.module.css';
 
-const role = 'admin.';
+const role = 'admin';
 
 const GuideStepHeader = ({ order, title, mode, modeHandler }) => {
 	let displayButtonText = '';
 	if (mode === 'folded') {
 		displayButtonText = 'Show';
 	} else if (mode === 'expanded') {
-		displayButtonText = 'Hight';
+		displayButtonText = 'Hide';
 	} else {
 		displayButtonText = 'Add Error Handler';
 	}
@@ -56,7 +56,7 @@ const GuideStepBody = ({
 	imgHeight,
 	imageUrl,
 }) => {
-	let cssClassList = `${styles.stepBody} ${
+	const cssClassList = `${styles.stepBody} ${
 		mode === 'expanded' ? styles.expanded : ''
 	} ${mode === 'folded' ? styles.folded : ''}`;
 
@@ -150,7 +150,7 @@ export default function GuideStep(data) {
 				title={data.title}
 				order={data.order}
 			/>
-			<GuideStepBody mode={stepMode} data={data} />
+			<GuideStepBody mode={stepMode} {...data} />
 			<GuideStepFooter mode={stepMode} />
 		</div>
 	);

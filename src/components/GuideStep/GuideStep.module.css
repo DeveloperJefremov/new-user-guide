@@ -170,47 +170,41 @@
 .stepBody {
 	outline: 2px solid red;
 	opacity: 0; /* Start with 0 opacity */
-	transform: translateY(-20px); /* Start slightly above */
-	transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out,
-		transform 0.3s ease-in-out;
+	transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
 	max-height: 0; /* Collapsed by default */
 	overflow: hidden; /* Hide content that exceeds max-height */
 }
 /* Expanded state */
 .expanded {
 	opacity: 1; /* Fade in to full opacity */
-	transform: translateY(0); /* Slide into place */
 	max-height: 500px; /* Adjust this value based on the content’s maximum height */
+	animation: fadeIn 0.3s ease-in-out forwards;
 }
 /* Folded state */
 .folded {
 	opacity: 0; /* Ensure opacity is 0 */
-	transform: translateY(-20px); /* Slide out of view */
 	max-height: 0; /* Max-height 0 to hide the content */
+	animation: fadeOut 0.3s ease-in-out forwards;
 }
-/* Animation for sliding in */
-@keyframes slideIn {
+/* Animation for fading in */
+@keyframes fadeIn {
 	0% {
 		opacity: 0;
-		transform: translateY(-20px);
 		max-height: 0;
 	}
 	100% {
 		opacity: 1;
-		transform: translateY(0);
 		max-height: 500px; /* Adjust to content’s maximum height */
 	}
 }
-/* Animation for sliding out */
-@keyframes slideOut {
+/* Animation for fading out */
+@keyframes fadeOut {
 	0% {
 		opacity: 1;
-		transform: translateY(0);
 		max-height: 500px; /* Adjust to content’s maximum height */
 	}
 	100% {
 		opacity: 0;
-		transform: translateY(-20px);
 		max-height: 0;
 	}
 }
