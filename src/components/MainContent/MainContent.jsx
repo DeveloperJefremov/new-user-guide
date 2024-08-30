@@ -28,32 +28,32 @@ const MainContentBody = ({ children }) => {
 	return <div className={styles.mainContentBody}>{children}</div>;
 };
 
-const MainContentBodyOld = () => {
-	const [steps, setSteps] = useState(mockData);
-	const [guideSteps, setGuideSteps] = useState(mockData);
+// const MainContentBodyOld = () => {
+// 	const [steps, setSteps] = useState(mockData);
+// 	const [guideSteps, setGuideSteps] = useState(mockData);
 
-	const handleSaveStep = newStep => {
-		setSteps(prevSteps => [...prevSteps, newStep]);
-	};
+// 	const handleSaveStep = newStep => {
+// 		setSteps(prevSteps => [...prevSteps, newStep]);
+// 	};
 
-	const handleEditStep = updatedStep => {
-		setSteps(prevSteps =>
-			prevSteps.map(step => (step.id === updatedStep.id ? updatedStep : step))
-		);
-	};
+// 	const handleEditStep = updatedStep => {
+// 		setSteps(prevSteps =>
+// 			prevSteps.map(step => (step.id === updatedStep.id ? updatedStep : step))
+// 		);
+// 	};
 
-	const handleDeleteStep = stepId => {
-		setSteps(prevSteps => prevSteps.filter(step => step.id !== stepId));
-	};
+// 	const handleDeleteStep = stepId => {
+// 		setSteps(prevSteps => prevSteps.filter(step => step.id !== stepId));
+// 	};
 
-	return (
-		<>
-			<div className={styles.mainContentBody}>
-				<div className={styles.main}></div>
-			</div>
-		</>
-	);
-};
+// 	return (
+// 		<>
+// 			<div className={styles.mainContentBody}>
+// 				<div className={styles.main}></div>
+// 			</div>
+// 		</>
+// 	);
+// };
 
 export default function MainContent() {
 	return (
@@ -66,6 +66,7 @@ export default function MainContent() {
 			<MainContentBody>
 				<GuideSetsList />
 			</MainContentBody>
+
 			<MainContentFooter info='2024 Your Company. All rights reserved.' />
 		</div>
 	);

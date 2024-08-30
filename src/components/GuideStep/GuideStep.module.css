@@ -1,12 +1,54 @@
+/* step content */
 .step {
-	outline: 2px solid red;
+	/* outline: 2px solid red; */
 	padding: 20px;
 	border: 1px solid #ddd;
 	margin: 10px 0;
 	margin-bottom: 20px;
 }
+.stepContent {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
 
+.stepDetails {
+	flex-direction: column;
+}
+
+.stepDetails label {
+	display: block;
+	margin-bottom: 10px;
+}
+
+.input,
+.textarea {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 8px;
+	font-size: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.input:focus,
+.textarea:focus {
+	border-color: #007bff;
+	outline: none;
+}
+
+.stepImagePreview {
+	display: block;
+	margin-top: 10px;
+	max-width: 100%;
+	height: auto;
+}
+
+/* header */
 .stepHeader {
+	/* outline: 2px solid red; */
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -21,11 +63,16 @@
 	flex-direction: column;
 }
 
-/* .headerLeft p {
+.headerLeft h3 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.headerLeft p {
 	margin: 0;
 	font-size: 14px;
 	color: #777;
-} */
+}
 
 .headerRight {
 	display: flex;
@@ -59,75 +106,14 @@
 	opacity: 0.8;
 }
 
-/* src/components/Step.module.css */
-
-.stepContent {
-	margin-top: 10px;
-	margin-bottom: 10px;
-	display: flex;
-	justify-content: space-between;
-	padding: 10px;
-}
-
-.stepDetails {
-	display: flex;
-	flex-direction: column;
-}
-
-.stepDetails label {
-	display: block;
-	margin-bottom: 10px;
-}
-
-.input,
-.textarea {
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	padding: 8px;
-	font-size: 1rem;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.input:focus,
-.textarea:focus {
-	border-color: #007bff;
-	outline: none;
-}
-
-.stepImagePreview {
-	display: block;
-	margin-top: 10px;
-	max-width: 100%;
-	height: auto;
-}
-
-.executeButton:hover {
-	background-color: #45a049;
-}
-.highlighted::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 120%; /* Ширина чуть больше родительского элемента */
-	height: 130%; /* Высота чуть больше родительского элемента */
-	outline: 1px solid #ccc;
-	z-index: 30; /* Устанавливаем z-index выше для подсветки */
-	/* border: 2px solid beige; */
-	border-radius: 10px;
-	background-color: rgba(222, 225, 138, 0.5); /* Бежевый цвет с прозрачностью */
-	pointer-events: none; /* Чтобы подсветка не мешала кликам по элементу */
-
-	transform: translate(-50%, -50%); /* Центрируем по X и Y */
-}
-
-/* src/components/StepFooter.module.css */
+/* footer */
 .stepFooter {
-	display: flex;
+	/* outline: 2px solid red; */
+
+	/* display: flex; */
+	display: none;
 	justify-content: flex-end; /* Кнопка сохраняется справа */
 	padding: 10px 20px;
-	background-color: #f4f4f4;
 	border-top: 1px solid #ddd;
 	/* Устанавливаем минимальную высоту футера */
 	min-height: 64px; /* Устанавливаем нужную высоту футера */
@@ -167,4 +153,92 @@
 	color: #000;
 }
 
-/* src/components/StepHeader.module.css */
+/* step body */
+/* step body start*/
+/* .stepBody {
+	outline: 2px solid red;
+	display: none;
+}
+.folded {
+	display: none;
+}
+
+.expanded {
+	display: block;
+} */
+/* Initial state of stepBody */
+.stepBody {
+	outline: 2px solid red;
+	opacity: 0; /* Start with 0 opacity */
+	transform: translateY(-20px); /* Start slightly above */
+	transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out,
+		transform 0.3s ease-in-out;
+	max-height: 0; /* Collapsed by default */
+	overflow: hidden; /* Hide content that exceeds max-height */
+}
+/* Expanded state */
+.expanded {
+	opacity: 1; /* Fade in to full opacity */
+	transform: translateY(0); /* Slide into place */
+	max-height: 500px; /* Adjust this value based on the content’s maximum height */
+}
+/* Folded state */
+.folded {
+	opacity: 0; /* Ensure opacity is 0 */
+	transform: translateY(-20px); /* Slide out of view */
+	max-height: 0; /* Max-height 0 to hide the content */
+}
+/* Animation for sliding in */
+@keyframes slideIn {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+		max-height: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+		max-height: 500px; /* Adjust to content’s maximum height */
+	}
+}
+/* Animation for sliding out */
+@keyframes slideOut {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+		max-height: 500px; /* Adjust to content’s maximum height */
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-20px);
+		max-height: 0;
+	}
+}
+
+/* step body end*/
+
+.error {
+	color: red;
+	outline: 5px solid red;
+}
+/* use later */
+
+.executeButton:hover {
+	background-color: #45a049;
+}
+.highlighted::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 120%; /* Ширина чуть больше родительского элемента */
+	height: 130%; /* Высота чуть больше родительского элемента */
+	outline: 1px solid #ccc;
+	z-index: 30; /* Устанавливаем z-index выше для подсветки */
+	/* border: 2px solid beige; */
+	border-radius: 10px;
+	background-color: rgba(222, 225, 138, 0.5); /* Бежевый цвет с прозрачностью */
+	pointer-events: none; /* Чтобы подсветка не мешала кликам по элементу */
+
+	transform: translate(-50%, -50%); /* Центрируем по X и Y */
+}

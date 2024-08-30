@@ -25,9 +25,8 @@ const GuideSetFooter = ({ content }) => {
 	);
 };
 
-//реализовать + -
 export default function GuideSet({ data }) {
-	const [isContentVisible, setIsContentVisible] = useState(true);
+	const [isContentVisible, setIsContentVisible] = useState(false);
 
 	const toggleContentVisibility = () => {
 		setIsContentVisible(prevState => !prevState);
